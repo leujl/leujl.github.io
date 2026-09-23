@@ -1,8 +1,8 @@
-# 個人教學資源網 V1.0
+# 個人教學資源網 V1.1
 
 這是一套以台灣高中／高職學生為主要使用者的靜態教學網站。網站使用 HTML、CSS、JavaScript 製作，不需要資料庫或後端伺服器，可免費部署到 GitHub Pages。
 
-目前第一門課程是「數位邏輯設計」，包含 14 個章節入口；第 3 章「基本邏輯閘」已完成示範內容。
+目前第一門課程是「數位邏輯設計」，依照課本目錄設置 8 個章節入口；第 1 章已有教學教材與題庫，第 2 章「基本邏輯閘」已有網頁示範內容。
 
 ## 網站架構
 
@@ -16,8 +16,7 @@ teaching-website/
 │  ├─ index.html                      課程總覽
 │  └─ digital-logic/
 │     ├─ index.html                   數位邏輯設計課程首頁
-│     ├─ chapter01/ ～ chapter14/     各章頁面
-│     └─ chapter03-logic-gates/       基本邏輯閘完整示範章節
+│     └─ chapter01/ ～ chapter08/     八個章節頁面（第 2 章為完整示範）
 ├─ css/style.css                      全站外觀與響應式設計
 ├─ js/main.js                         手機選單與頁尾年份
 ├─ assets/icons/favicon.svg           網站圖示
@@ -65,12 +64,14 @@ teaching-website/
 
 資料夾名稱建議使用小寫英文與連字號，不使用空格，例如 `programming-basics`。
 
-## 新增章節
+## 調整或新增章節
+
+目前課程固定為 8 章。如日後課程版本確實增加章節，可依下列方式處理：
 
 1. 複製任一尚未填寫的章節資料夾，例如 `chapter04/`。
-2. 將複製品改名，例如 `chapter15/`。
+2. 將複製品改成新章號，例如 `chapter09/`。
 3. 開啟其中的 `index.html`，修改章號、章名及各區內容。
-4. 到課程首頁複製一張章節卡片，將 `href` 改成新資料夾，例如 `chapter15/index.html`。
+4. 到課程首頁複製一張章節卡片，將 `href` 改成新資料夾，例如 `chapter09/index.html`。
 
 所有章節統一包含：學習目標、課程內容、重點整理、教學範例、練習題、教材下載、延伸學習。保留這些區塊，可以讓全站結構一致。
 
@@ -92,20 +93,20 @@ teaching-website/
 
 ## 新增 PDF 教材
 
-以第 3 章講義為例：
+以第 1 章補充講義為例：
 
-1. 將 PDF 放入 `downloads/digital-logic/chapter03/`。
-2. 建議檔名使用英文、數字與連字號，例如 `logic-gates-handout.pdf`。
+1. 將 PDF 放入 `downloads/digital-logic/`。
+2. 建議檔名使用英文、數字與連字號，例如 `ch01-extra-handout.pdf`。
 3. 在 `downloads.html` 對應位置，把「準備中」區塊改成下列連結：
 
 ```html
-<a class="button" href="downloads/digital-logic/chapter03/logic-gates-handout.pdf" download>下載 PDF</a>
+<a class="button" href="downloads/digital-logic/ch01-extra-handout.pdf" download>下載 PDF</a>
 ```
 
-4. 若從第 3 章頁面直接提供下載，因所在層級不同，連結寫法應為：
+4. 若從第 1 章頁面直接提供下載，因所在層級不同，連結寫法應為：
 
 ```html
-<a class="button" href="../../../downloads/digital-logic/chapter03/logic-gates-handout.pdf" download>下載 PDF</a>
+<a class="button" href="../../../downloads/digital-logic/ch01-extra-handout.pdf" download>下載 PDF</a>
 ```
 
 沒有檔案時請保留「準備中」，不要先放下載連結，才不會造成失效連結。
@@ -163,7 +164,7 @@ https://您的GitHub帳號.github.io/teaching-website/
 - 所有頁面共用 `css/style.css` 與 `js/main.js`。
 - 沒有後端、登入、資料庫或建置程序，降低維護難度。
 - 主要內容字級至少 16px，支援鍵盤操作、手機選單與橫向表格捲動。
-- V1.0 不包含互動式邏輯閘、學生帳號、成績系統或 20 題線上測驗。
+- V1.1 不包含學生帳號、成績系統或自動計分的線上測驗。
 
 ## 授權與隱私提醒
 
