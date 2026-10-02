@@ -14,9 +14,9 @@
 <header class="site-header"><a class="skip" href="#main">跳到主要內容</a><div class="nav-wrap"><a class="brand" href="../../../index.html"><span class="brand-mark">01</span><span>個人教學資源網</span></a><button class="menu-button" aria-expanded="false" aria-controls="site-nav">選單</button><nav id="site-nav" aria-label="主要導覽"><a href="../../../index.html">首頁</a><a aria-current="page" href="../../../courses/index.html">課程</a><a href="../../../downloads.html">教材下載</a><a href="../../../quizzes.html">題庫／測驗</a><a href="../../../about.html">關於老師</a></nav></div></header>
 <main id="main">
 <nav class="crumb" aria-label="麵包屑"><a href="../../../index.html">首頁</a><b>/</b><a href="../../index.html">課程</a><b>/</b><a href="../index.html">電子學（下冊）</a><b>/</b><span aria-current="page">第 10 章</span></nav>
-<section class="chapter-hero"><div><p class="eyebrow">CHAPTER 10 · 10-1</p><h1>理想運算放大器的認識</h1><p>依課本 10-1 內容整理：基本組成、電路符號、理想特性、負回授、虛短路、比較器與解題方法。</p></div><span class="chapter-number">10</span></section>
+<section class="chapter-hero"><div><p class="eyebrow">CHAPTER 10 · 10-1～10-2</p><h1>運算放大器</h1><p>依課本 10-1、10-2 整理：理想運算放大器、負回授、虛短路、比較器，以及運算放大器的主要特性與參數。</p></div><span class="chapter-number">10</span></section>
 <div class="chapter-layout">
-<aside class="toc"><strong>本頁導覽</strong><a href="#p1">1 內部基本組成</a><a href="#p2">2 電路符號</a><a href="#p3">3 理想特性</a><a href="#p4">4 兩大功能</a><a href="#p5">5 負回授</a><a href="#p6">6 虛短路</a><a href="#p7">7 比較器</a><a href="#p8">8 虛短路必要條件</a><a href="#p9">9 解題九步驟</a><a href="#practice">題庫</a></aside>
+<aside class="toc"><strong>本頁導覽</strong><a href="#p1">1 內部基本組成</a><a href="#p2">2 電路符號</a><a href="#p3">3 理想特性</a><a href="#p4">4 兩大功能</a><a href="#p5">5 負回授</a><a href="#p6">6 虛短路</a><a href="#p7">7 比較器</a><a href="#p8">8 虛短路必要條件</a><a href="#p9">9 解題九步驟</a><a href="#p10">10-2 特性與參數</a><a href="#practice">題庫</a></aside>
 <article class="lesson">
 <section id="p1"><p class="section-no">01</p><h2>運算放大器 IC 的內部基本組成電路</h2><p>依課本可分成四大部分：</p><ul class="check-list">
 <li><b>具有兩個輸入信號端的高輸入電阻差動放大電路：</b>放大兩輸入端的信號差值，同時抑制兩端共同出現的雜訊；高輸入電阻可減少信號源被負載的影響。</li>
@@ -75,7 +75,58 @@
 </div>
 <div class="keybox"><b>一句口訣：</b>「找回授 → 判模式 → 寫虛短 → 寫零電流 → KCL → 求輸出 → 查飽和」。</div></section>
 
-<section id="practice"><p class="section-no">10</p><h2>章節題庫</h2><div class="download-row available"><div><b>第 10 章 10-1 基礎題庫</b><small>15 題，含基本觀念、負回授、虛短路、比較器與簡易計算，附答案與解析。</small></div><div class="download-actions"><a class="button primary" href="question-bank.html">開始練習 →</a></div></div></section>
+
+<section id="p10"><p class="section-no">10</p><h2>10-2 運算放大器的特性及參數</h2>
+
+<h3>1. 實際與理想運算放大器比較</h3>
+<p>以下保留課本表 10-1 的重點，但依需求移除 μA741 欄位，以及「輸出短路電流 I<sub>os</sub>」那一列。</p>
+<table class="mini-table">
+<thead><tr><th>特性參數</th><th>理想 OPA</th></tr></thead>
+<tbody>
+<tr><td>輸入電阻 R<sub>i</sub></td><td>∞</td></tr>
+<tr><td>輸入偏壓電流 I<sub>ib</sub></td><td>0</td></tr>
+<tr><td>輸入抵補電流 I<sub>io</sub></td><td>0</td></tr>
+<tr><td>輸入抵補電壓 V<sub>io</sub></td><td>0</td></tr>
+<tr><td>輸出電阻 R<sub>o</sub></td><td>0</td></tr>
+<tr><td>開迴路電壓增益 A<sub>vo</sub></td><td>∞</td></tr>
+<tr><td>共模拒斥比 CMRR</td><td>∞</td></tr>
+<tr><td>增益頻寬乘積 GBP</td><td>∞</td></tr>
+<tr><td>變動率 SR</td><td>∞</td></tr>
+</tbody></table>
+
+<h3>2. 輸入偏壓電流（input bias current）：I<sub>ib</sub></h3>
+<p>輸入偏壓電流是指 OPA 兩個輸入端所需直流偏壓電流的平均值。理想 OPA 的輸入阻抗無窮大，因此理想值為 0。</p>
+<div class="formula"><b>I<sub>ib</sub> = (I<sub>ib1</sub> + I<sub>ib2</sub>) / 2</b></div>
+
+<h3>3. 輸入抵補電流（input offset current）：I<sub>io</sub></h3>
+<p>輸入抵補電流是兩個輸入端偏壓電流之差的絕對值，用來描述兩輸入端電流不平衡的程度；理想值為 0。</p>
+<div class="formula"><b>I<sub>io</sub> = |I<sub>ib1</sub> − I<sub>ib2</sub>|</b></div>
+
+<h3>4. 輸入抵補電壓（input offset voltage）：V<sub>io</sub></h3>
+<p>當兩輸入端理論上應等電位時，實際 OPA 因內部元件不完全對稱，可能需要在輸入端施加一個微小差動電壓，使輸出回到 0 V。這個等效差動電壓就是輸入抵補電壓。</p>
+<div class="formula"><b>V<sub>io</sub> = |V<sub>i(+)</sub> − V<sub>i(−)</sub>|</b></div>
+<div class="keybox"><b>補充：</b>μA741 可藉由第 1、5 腳調整其輸入抵補電壓，使輸出在無輸入時更接近 0 V。</div>
+
+<h3>5. 共模拒斥比（Common-Mode Rejection Ratio, CMRR）</h3>
+<p>OPA 主要希望放大兩輸入端的「差值」，而抑制同時出現在兩輸入端的「共模信號」。因此 CMRR 越大，表示 OPA 越能抑制共模雜訊。</p>
+<div class="formula">差模信號：<b>V<sub>d</sub> = V<sub>i1</sub> − V<sub>i2</sub></b></div>
+<div class="formula">共模信號：<b>V<sub>c</sub> = (V<sub>i1</sub> + V<sub>i2</sub>) / 2</b></div>
+<div class="formula">輸出電壓：<b>V<sub>o</sub> = A<sub>d</sub>V<sub>d</sub> + A<sub>c</sub>V<sub>c</sub></b></div>
+<div class="formula"><b>CMRR = |A<sub>d</sub> / A<sub>c</sub>|</b></div>
+<div class="formula"><b>CMRR(dB) = 20 log<sub>10</sub>|A<sub>d</sub> / A<sub>c</sub>|</b></div>
+<p>理想情況：<b>A<sub>d</sub> = ∞、A<sub>c</sub> = 0，因此 CMRR = ∞。</b></p>
+
+<h3>6. 增益頻寬乘積（gain-bandwidth product, GBP）</h3>
+<p>OPA 的開迴路增益會隨頻率上升而下降；在一定範圍內，增益與頻寬的乘積近似為常數。</p>
+<div class="formula"><b>GBP = A<sub>v</sub> × BW</b></div>
+<div class="keybox">因此在同一顆 OPA 中，若閉迴路增益設得越大，可用頻寬通常越小；反之增益越小，可用頻寬通常越大。</div>
+
+<h3>7. 變動率（Slew Rate, SR）</h3>
+<p>變動率是輸出電壓每單位時間所能改變的最大速率，用來描述 OPA 對快速變化信號的追隨能力。</p>
+<div class="formula"><b>SR = ΔV<sub>o</sub> / Δt</b>　或　<b>SR = dV<sub>o</sub>/dt</b></div>
+<p>常用單位為 V/μs。若輸入變化速度超過 OPA 的 SR 限制，輸出波形可能失真。</p>
+</section>
+<section id="practice"><p class="section-no">11</p><h2>章節題庫</h2><div class="download-row available"><div><b>第 10 章 10-1 基礎題庫</b><small>15 題，含基本觀念、負回授、虛短路、比較器與簡易計算，附答案與解析。</small></div><div class="download-actions"><a class="button primary" href="question-bank.html">開始練習 →</a></div></div><div class="download-row available" style="margin-top:.8rem"><div><b>第 10 章 10-2 特性及參數題庫</b><small>20 題，涵蓋 Iib、Iio、Vio、CMRR、GBP、SR 與理想 OPA 特性。</small></div><div class="download-actions"><a class="button primary" href="question-bank-10-2.html">開始練習 →</a></div></div></section>
 </article>
 </div>
 </main>
