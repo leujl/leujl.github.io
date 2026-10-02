@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
+<!DOCTYPE html><html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="電子學（下冊）第10章 10-2 運算放大器特性及參數題庫。">
 <title>第 10 章 10-2 題庫｜電子學（下冊）</title>
@@ -9,38 +7,12 @@
 <style>
 .q{padding:1rem 1.2rem;border:1px solid #dce3e8;border-radius:12px;margin:1rem 0;background:#fff}.q h3{margin-top:0}.q details{margin-top:.8rem;padding:.7rem 1rem;background:#f6fafb;border-radius:8px}.q summary{cursor:pointer;font-weight:700}.answer{line-height:1.8;margin-top:.7rem}.score-note{padding:1rem 1.2rem;background:#fffaf0;border:1px solid #ead28d;border-radius:10px}
 </style>
-</head>
+<link rel="stylesheet" href="../../../css/auth.css"></head>
 <body>
-<header class="site-header"><a class="skip" href="#main">跳到主要內容</a><div class="nav-wrap"><a class="brand" href="../../../index.html"><span class="brand-mark">01</span><span>個人教學資源網</span></a><button class="menu-button" aria-expanded="false" aria-controls="site-nav">選單</button><nav id="site-nav" aria-label="主要導覽"><a href="../../../index.html">首頁</a><a aria-current="page" href="../../../courses/index.html">課程</a><a href="../../../downloads.html">教材下載</a><a href="../../../quizzes.html">題庫／測驗</a><a href="../../../about.html">關於老師</a></nav></div></header>
-<main id="main">
-<nav class="crumb" aria-label="麵包屑"><a href="../../../index.html">首頁</a><b>/</b><a href="../../index.html">課程</a><b>/</b><a href="../index.html">電子學（下冊）</a><b>/</b><a href="index.html">第 10 章</a><b>/</b><span aria-current="page">10-2 題庫</span></nav>
-<section class="page-intro"><p class="eyebrow">PRACTICE · CHAPTER 10</p><h1>10-2 運算放大器的特性及參數</h1><p>共 20 題，依本章課本內容編寫，範圍包含 Iib、Iio、Vio、CMRR、GBP、SR 及理想 OPA 特性。</p></section>
-<section class="section compact">
-<div class="score-note"><b>建議：</b>先獨立作答，再展開答案與解析。計算題請先列公式再代入數值。</div>
-<article class="q"><h3>1. 理想 OPA 的輸入偏壓電流 Iib 為何？</h3><p>(A) ∞　(B) 0　(C) 1 A　(D) 75 Ω</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> 理想 OPA 的輸入電阻為無窮大，因此兩輸入端所需偏壓電流理想值為 0。</div></details></article>
-<article class="q"><h3>2. 輸入偏壓電流 Iib 的定義為何？</h3><p>(A) 兩輸入偏壓電流之和　(B) 兩輸入偏壓電流平均值　(C) 兩輸入偏壓電流差值　(D) 輸出電流平均值</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> Iib=(Iib1+Iib2)/2，表示兩輸入端偏壓電流的平均值。</div></details></article>
-<article class="q"><h3>3. 若 Iib1=90 nA、Iib2=70 nA，則 Iib 為多少？</h3><p>(A) 10 nA　(B) 20 nA　(C) 80 nA　(D) 160 nA</p><details><summary>答案與解析</summary><div class="answer"><b>答案：C。</b> Iib=(90+70)/2=80 nA。</div></details></article>
-<article class="q"><h3>4. 輸入抵補電流 Iio 的定義為何？</h3><p>(A) 兩輸入偏壓電流平均值　(B) 兩輸入偏壓電流差的絕對值　(C) 輸出電流　(D) 共模電流</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> Iio=|Iib1−Iib2|，表示兩輸入端偏壓電流不平衡程度。</div></details></article>
-<article class="q"><h3>5. 若 Iib1=95 nA、Iib2=80 nA，則 Iio 為多少？</h3><p>(A) 7.5 nA　(B) 15 nA　(C) 87.5 nA　(D) 175 nA</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> Iio=|95−80|=15 nA。</div></details></article>
-<article class="q"><h3>6. 理想 OPA 的輸入抵補電流 Iio 為何？</h3><p>(A) 0　(B) ∞　(C) 1 μA　(D) 無法判定</p><details><summary>答案與解析</summary><div class="answer"><b>答案：A。</b> 理想 OPA 兩輸入端完全對稱，因此 Iio 的理想值為 0。</div></details></article>
-<article class="q"><h3>7. 輸入抵補電壓 Vio 表示什麼？</h3><p>(A) 輸出端最大電壓　(B) 兩輸入端等效差動電壓誤差　(C) 電源電壓　(D) 負載電壓</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> Vio 用來表示因內部不完全對稱而造成的輸入端等效差動電壓誤差。</div></details></article>
-<article class="q"><h3>8. 輸入抵補電壓的公式為何？</h3><p>(A) |Vi(+)+Vi(−)|　(B) |Vi(+)−Vi(−)|　(C) Vo/Vi　(D) Ad/Ac</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> Vio=|Vi(+)−Vi(−)|。</div></details></article>
-<article class="q"><h3>9. μA741 可由哪兩個接腳調整輸入抵補電壓？</h3><p>(A) 1、5 腳　(B) 2、3 腳　(C) 4、7 腳　(D) 6、8 腳</p><details><summary>答案與解析</summary><div class="answer"><b>答案：A。</b> 課本補充指出 μA741 可利用 1、5 腳調整輸入抵補電壓。</div></details></article>
-<article class="q"><h3>10. 差模信號 Vd 的公式為何？</h3><p>(A) Vi1+Vi2　(B) (Vi1+Vi2)/2　(C) Vi1−Vi2　(D) Vi1×Vi2</p><details><summary>答案與解析</summary><div class="answer"><b>答案：C。</b> 差模信號是兩輸入端信號之差：Vd=Vi1−Vi2。</div></details></article>
-<article class="q"><h3>11. 共模信號 Vc 的公式為何？</h3><p>(A) Vi1−Vi2　(B) (Vi1+Vi2)/2　(C) Vi1/Vi2　(D) Vi1×Vi2</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> 共模信號為兩輸入信號平均值：Vc=(Vi1+Vi2)/2。</div></details></article>
-<article class="q"><h3>12. OPA 輸出可寫成哪一式？</h3><p>(A) Vo=AdVd+AcVc　(B) Vo=Vd/Vc　(C) Vo=Ad/Ac　(D) Vo=GBP×SR</p><details><summary>答案與解析</summary><div class="answer"><b>答案：A。</b> 課本以 Vo=AdVd+AcVc 表示差模與共模成分共同對輸出的影響。</div></details></article>
-<article class="q"><h3>13. CMRR 的公式為何？</h3><p>(A) |Ac/Ad|　(B) |Ad/Ac|　(C) Ad+Ac　(D) Ad−Ac</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> 共模拒斥比 CMRR=|Ad/Ac|。</div></details></article>
-<article class="q"><h3>14. CMRR(dB) 的公式為何？</h3><p>(A) 10log|Ad/Ac|　(B) 20log|Ad/Ac|　(C) 20log|Ac/Ad|　(D) Ad×Ac</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> 電壓增益比以 dB 表示時為 20log10|Ad/Ac|。</div></details></article>
-<article class="q"><h3>15. 理想 OPA 的 Ad、Ac 與 CMRR 關係何者正確？</h3><p>(A) Ad=0、Ac=∞、CMRR=0　(B) Ad=∞、Ac=0、CMRR=∞　(C) Ad=1、Ac=1、CMRR=1　(D) 三者皆為 0</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> 理想 OPA 希望無限放大差模、完全抑制共模，因此 Ad=∞、Ac=0、CMRR=∞。</div></details></article>
-<article class="q"><h3>16. GBP 的公式為何？</h3><p>(A) GBP=Av×BW　(B) GBP=Av/BW　(C) GBP=BW/Av　(D) GBP=SR×BW</p><details><summary>答案與解析</summary><div class="answer"><b>答案：A。</b> 課本定義增益頻寬乘積 GBP=Av×BW。</div></details></article>
-<article class="q"><h3>17. 某 OPA 的 GBP=1 MHz，若閉迴路增益 Av=100，則頻寬約為多少？</h3><p>(A) 1 kHz　(B) 10 kHz　(C) 100 kHz　(D) 1 MHz</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> BW=GBP/Av=1 MHz/100=10 kHz。</div></details></article>
-<article class="q"><h3>18. 若 OPA 的閉迴路增益增加，在 GBP 近似固定時，頻寬通常如何變化？</h3><p>(A) 增加　(B) 減少　(C) 不變　(D) 變成 0</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> GBP≈Av×BW 為定值，因此 Av 增加時 BW 會下降。</div></details></article>
-<article class="q"><h3>19. 變動率 SR 的意義為何？</h3><p>(A) 輸入電流變化率　(B) 輸出電壓每單位時間最大變化速率　(C) 電阻溫度係數　(D) 共模增益</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> SR 描述輸出電壓對快速輸入變化的追隨能力。</div></details></article>
-<article class="q"><h3>20. 某 OPA 輸出由 −9 V 變到 +6 V，歷時 30 μs，則 SR 為多少？</h3><p>(A) 0.3 V/μs　(B) 0.5 V/μs　(C) 5 V/μs　(D) 15 V/μs</p><details><summary>答案與解析</summary><div class="answer"><b>答案：B。</b> ΔVo=6−(−9)=15 V，因此 SR=15/30=0.5 V/μs。</div></details></article>
-<p><a class="button ghost" href="index.html">← 回第 10 章教材</a></p>
-</section>
-</main>
-<footer><div><strong>個人教學資源網</strong><p>把複雜概念拆成可以一步一步理解的學習路徑。</p></div><div><a href="../../../courses/index.html">課程總覽</a><a href="../../../downloads.html">教材下載</a></div><p class="copyright">© <span data-year></span> 個人教學資源網</p></footer>
+<header class="site-header"><a class="skip" href="#main">跳到主要內容</a><div class="nav-wrap"><a class="brand" href="../../../index.html"><span class="brand-mark">01</span><span>個人教學資源網</span></a><button class="menu-button" aria-expanded="false" aria-controls="site-nav">選單</button><nav id="site-nav" aria-label="主要導覽"><a href="../../../index.html">首頁</a><a aria-current="page" href="../../../courses/index.html">課程</a><a href="../../../downloads.html">教材下載</a><a href="../../../quizzes.html">題庫／測驗</a><a href="../../../about.html">關於老師</a><a href="../../../dashboard/">我的課程</a></nav><button class="button ghost" data-logout="" hidden="">登出</button></div></header>
+<main id="main"><p class="status" data-status="" role="status">正在確認登入與課程權限…</p><div id="lesson-content" data-private="" data-course-id="electronics-2" data-resource-id="electronics-2-chapter10-question-bank-10-2" hidden=""></div><noscript>請啟用 JavaScript 並登入以閱讀教材。</noscript></main>
+<footer><div><strong>個人教學資源網</strong><p>把複雜概念拆成可以一步一步理解的學習路徑。</p></div><div><a href="../../../courses/index.html">課程總覽</a><a href="../../../downloads.html">教材下載</a></div><p class="copyright">© <span data-year=""></span> 個人教學資源網</p></footer>
 <script src="../../../js/main.js"></script>
-</body>
-</html>
+
+
+<script type="module" src="../../../js/lesson.js"></script></body></html>

@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
+<!DOCTYPE html><html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="電子學（下冊）第10章：理想運算放大器、負回授、虛短路、比較器與解題方法。">
 <title>第 10 章 運算放大器｜電子學（下冊）</title>
@@ -9,128 +7,12 @@
 <style>
 .lesson figure{margin:1.2rem 0 2rem;text-align:center}.lesson figure img{max-width:100%;height:auto;border:1px solid #dfe6ea;border-radius:12px;background:#fff}.lesson figcaption{font-size:.9rem;color:#667;margin-top:.55rem}.formula{padding:1rem 1.2rem;border-left:4px solid #188b9c;background:#f5fbfc;border-radius:8px;margin:1rem 0;font-size:1.04rem;line-height:1.9}.keybox{padding:1rem 1.2rem;border:1px solid #e2c77c;background:#fffaf0;border-radius:10px;margin:1rem 0}.solve-steps{counter-reset:step;display:grid;gap:.8rem}.solve-steps div{position:relative;padding:1rem 1rem 1rem 4rem;border:1px solid #dbe3e8;border-radius:12px;background:#fff}.solve-steps div:before{counter-increment:step;content:counter(step);position:absolute;left:1rem;top:.85rem;width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:#167f91;color:#fff;font-weight:700}.mini-table{width:100%;border-collapse:collapse;margin:1rem 0}.mini-table th,.mini-table td{border:1px solid #d8e0e5;padding:.65rem;text-align:left}.mini-table th{background:#f1f7f8}
 </style>
-</head>
+<link rel="stylesheet" href="../../../css/auth.css"></head>
 <body>
-<header class="site-header"><a class="skip" href="#main">跳到主要內容</a><div class="nav-wrap"><a class="brand" href="../../../index.html"><span class="brand-mark">01</span><span>個人教學資源網</span></a><button class="menu-button" aria-expanded="false" aria-controls="site-nav">選單</button><nav id="site-nav" aria-label="主要導覽"><a href="../../../index.html">首頁</a><a aria-current="page" href="../../../courses/index.html">課程</a><a href="../../../downloads.html">教材下載</a><a href="../../../quizzes.html">題庫／測驗</a><a href="../../../about.html">關於老師</a></nav></div></header>
-<main id="main">
-<nav class="crumb" aria-label="麵包屑"><a href="../../../index.html">首頁</a><b>/</b><a href="../../index.html">課程</a><b>/</b><a href="../index.html">電子學（下冊）</a><b>/</b><span aria-current="page">第 10 章</span></nav>
-<section class="chapter-hero"><div><p class="eyebrow">CHAPTER 10 · 10-1～10-2</p><h1>運算放大器</h1><p>依課本 10-1、10-2 整理：理想運算放大器、負回授、虛短路、比較器，以及運算放大器的主要特性與參數。</p></div><span class="chapter-number">10</span></section>
-<div class="chapter-layout">
-<aside class="toc"><strong>本頁導覽</strong><a href="#p1">1 內部基本組成</a><a href="#p2">2 電路符號</a><a href="#p3">3 理想特性</a><a href="#p4">4 兩大功能</a><a href="#p5">5 負回授</a><a href="#p6">6 虛短路</a><a href="#p7">7 比較器</a><a href="#p8">8 虛短路必要條件</a><a href="#p9">9 解題九步驟</a><a href="#p10">10-2 特性與參數</a><a href="#practice">題庫</a></aside>
-<article class="lesson">
-<section id="p1"><p class="section-no">01</p><h2>運算放大器 IC 的內部基本組成電路</h2><p>依課本可分成四大部分：</p><ul class="check-list">
-<li><b>具有兩個輸入信號端的高輸入電阻差動放大電路：</b>放大兩輸入端的信號差值，同時抑制兩端共同出現的雜訊；高輸入電阻可減少信號源被負載的影響。</li>
-<li><b>高電壓增益放大電路：</b>提供很大的電壓增益，課本指出開迴路電壓增益可大於 10<sup>5</sup>。</li>
-<li><b>具有低輸出電阻的射極隨耦放大電路：</b>提供較高電流增益與低輸出電阻，使輸出較不受負載影響。</li>
-<li><b>定電流源電路：</b>提供穩定的直流偏壓電流給各級放大電路。</li>
-</ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-2.png" alt="運算放大器 IC 之結構方塊圖"><figcaption>運算放大器 IC 之結構方塊圖</figcaption></figure></section>
-
-<section id="p2"><p class="section-no">02</p><h2>運算放大器之電路符號</h2><ul class="check-list"><li><b>反相輸入端：</b>標示「−」，輸入信號增加時，輸出傾向往相反方向變化。</li><li><b>非反相輸入端：</b>標示「＋」，輸入信號增加時，輸出傾向往同方向變化。</li><li><b>輸出端：</b>以 V<sub>o</sub> 表示。</li><li><b>電源端：</b>一般為 +V<sub>CC</sub> 與 −V<sub>CC</sub>。</li></ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-3a.png" alt="運算放大器標準電路符號"><figcaption>運算放大器標準電路符號</figcaption></figure></section>
-
-<section id="p3"><p class="section-no">03</p><h2>理想運算放大器具有下列特性</h2><ul class="check-list"><li><b>輸入電阻無窮大：</b>R<sub>i</sub> = ∞，所以流入輸入端的電流 I<sub>i</sub> = 0。</li><li><b>輸出電阻為 0：</b>R<sub>o</sub> = 0，使輸出電壓理想上不受負載影響。</li><li><b>開迴路電壓增益無窮大：</b>A<sub>vo</sub> = ∞。</li></ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-5a.png" alt="運算放大器的等效電路模型"><figcaption>運算放大器的等效電路模型</figcaption></figure></section>
-
-<section id="p4"><p class="section-no">04</p><h2>運算放大器的主要功能特性有二</h2><ul class="check-list"><li><b>負回授的虛短路（虛接地）功能特性。</b></li><li><b>比較器功能特性。</b></li></ul><div class="keybox"><b>判斷核心：</b>看到 OPA 題目時，先判斷「有沒有負回授」。有負回授且未飽和，通常走虛短路分析；沒有負回授，通常走比較器分析。</div></section>
-
-<section id="p5"><p class="section-no">05</p><h2>放大器的負回授基本觀念</h2><p>將輸出的一部分回送到反相輸入端，稱為負回授。設回授因數為 β，則：</p>
-<div class="formula">β = V<sub>i(−)</sub> / V<sub>o</sub>　→　V<sub>i(−)</sub> = βV<sub>o</sub></div>
-<p>理想 OPA 的開迴路關係可寫成：</p>
-<div class="formula">V<sub>o</sub> = A<sub>vo</sub>[V<sub>i(+)</sub> − V<sub>i(−)</sub>] = A<sub>vo</sub>[V<sub>i(+)</sub> − βV<sub>o</sub>]</div>
-<p>移項整理：</p>
-<div class="formula">A<sub>v</sub> = V<sub>o</sub>/V<sub>i(+)</sub> = A<sub>vo</sub>/(1 + βA<sub>vo</sub>) = 1/(1/A<sub>vo</sub> + β)</div>
-<p>當理想 OPA 的 A<sub>vo</sub> → ∞ 時，1/A<sub>vo</sub> → 0，因此：</p>
-<div class="formula"><b>A<sub>v</sub> ≈ 1/β</b></div>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-9ab.png" alt="運算放大器的負回授特性"><figcaption>運算放大器的負回授特性</figcaption></figure></section>
-
-<section id="p6"><p class="section-no">06</p><h2>放大器的負回授虛短路（虛接地）功能特性</h2><ul class="check-list">
-<li>加入負回授後，反相輸入端電壓會追隨非反相輸入端，因此 <b>V<sub>i(−)</sub> ≈ V<sub>i(+)</sub></b>。</li>
-<li>兩輸入端電壓差近似為 0，因此稱為<b>虛短路</b>；它是「電壓近似相等」，不代表兩端真的以導線短接。</li>
-<li>因理想 OPA 的輸入電阻 R<sub>i</sub> = ∞，所以兩輸入端的輸入電流近似為 0。</li>
-<li>若非反相輸入端接地，則 V<sub>i(+)</sub> = 0，因此 V<sub>i(−)</sub> ≈ 0；反相端雖然沒有真正接地，電位卻近似為 0，稱為<b>虛接地</b>。</li>
-</ul>
-<div class="keybox"><b>學生常錯：</b>「虛短」不是 I = ∞，而是 <b>V<sub>+</sub> ≈ V<sub>−</sub></b>；「輸入端不吸電流」則來自理想 OPA 的 <b>R<sub>i</sub> = ∞</b>。</div></section>
-
-<section id="p7"><p class="section-no">07</p><h2>比較器的功能特性與重點整理</h2><p>當理想 OPA <b>沒有接負回授網路</b>時，可視為比較器。由於 A<sub>vo</sub> 極大，只要兩輸入端有極小電壓差，輸出就會迅速進入正或負飽和。</p>
-<table class="mini-table"><thead><tr><th>輸入比較</th><th>輸出結果</th><th>判讀</th></tr></thead><tbody><tr><td>V<sub>+</sub> &gt; V<sub>−</sub></td><td>V<sub>o</sub> = +V<sub>sat</sub> ≈ +V<sub>CC</sub></td><td>正飽和</td></tr><tr><td>V<sub>+</sub> &lt; V<sub>−</sub></td><td>V<sub>o</sub> = −V<sub>sat</sub> ≈ −V<sub>CC</sub></td><td>負飽和</td></tr></tbody></table>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-10ab.png" alt="運算放大器比較器的輸出特性"><figcaption>運算放大器比較器的輸出特性</figcaption></figure>
-<div class="keybox"><b>重點：</b>比較器題目不是用 V<sub>+</sub> = V<sub>−</sub>；而是先比較 V<sub>+</sub> 與 V<sub>−</sub> 的大小，再決定輸出為 +V<sub>sat</sub> 或 −V<sub>sat</sub>。</div></section>
-
-<section id="p8"><p class="section-no">08</p><h2>OPA 虛短路之滿足必要條件</h2><p>依課本，必須同時滿足：</p><ul class="check-list"><li><b>開迴路增益 A<sub>vo</sub> = ∞</b>（理想 OPA 假設）。</li><li><b>電路為負回授結構。</b></li><li><b>輸出未飽和：</b>|V<sub>o</sub>| &lt; |V<sub>sat</sub>|。</li></ul>
-<div class="keybox">若輸出已飽和，就不能再直接使用 V<sub>+</sub> ≈ V<sub>−</sub> 的虛短路條件。</div></section>
-
-<section id="p9"><p class="section-no">09</p><h2>運算放大器應用電路：更好懂的「九步解題法」</h2>
-<p>課本以流程圖呈現。這裡改成學生較容易照著做的固定順序：</p>
-<div class="solve-steps">
-<div><b>先找回授線。</b><br>輸出 V<sub>o</sub> 有沒有回到「−」端？有的話通常是負回授；沒有則先考慮比較器。</div>
-<div><b>先分類。</b><br>負回授 → 進入線性放大分析；無負回授 → 比較 V<sub>+</sub>、V<sub>−</sub>。</div>
-<div><b>若為負回授，先寫兩大理想條件。</b><br>V<sub>+</sub> ≈ V<sub>−</sub>，且 I<sub>+</sub> = I<sub>−</sub> ≈ 0。</div>
-<div><b>若「＋」端接地，立刻標出虛接地。</b><br>V<sub>+</sub> = 0 → V<sub>−</sub> ≈ 0。</div>
-<div><b>在反相端節點寫 KCL。</b><br>因 OPA 輸入端不吸電流，流入節點的電流總和 = 流出節點的電流總和。</div>
-<div><b>代入電阻電流公式。</b><br>每一支路用 I=(V<sub>左</sub>−V<sub>右</sub>)/R，注意電流方向與正負號。</div>
-<div><b>解出 V<sub>o</sub> 或閉迴路增益。</b><br>整理成題目要的 V<sub>o</sub>、A<sub>v</sub> 或未知電阻。</div>
-<div><b>做飽和檢查。</b><br>確認 |V<sub>o</sub>| 是否小於 |V<sub>sat</sub>|；若超過，實際輸出只能停在飽和值。</div>
-<div><b>最後做合理性檢查。</b><br>反相放大器輸出應反相；非反相放大器輸出同相；比較器則只看高、低飽和。</div>
-</div>
-<div class="keybox"><b>一句口訣：</b>「找回授 → 判模式 → 寫虛短 → 寫零電流 → KCL → 求輸出 → 查飽和」。</div></section>
-
-
-<section id="p10"><p class="section-no">10</p><h2>10-2 運算放大器的特性及參數</h2>
-
-<h3>1. 實際與理想運算放大器比較</h3>
-<p>以下保留課本表 10-1 的重點，但依需求移除 μA741 欄位，以及「輸出短路電流 I<sub>os</sub>」那一列。</p>
-<table class="mini-table">
-<thead><tr><th>特性參數</th><th>理想 OPA</th></tr></thead>
-<tbody>
-<tr><td>輸入電阻 R<sub>i</sub></td><td>∞</td></tr>
-<tr><td>輸入偏壓電流 I<sub>ib</sub></td><td>0</td></tr>
-<tr><td>輸入抵補電流 I<sub>io</sub></td><td>0</td></tr>
-<tr><td>輸入抵補電壓 V<sub>io</sub></td><td>0</td></tr>
-<tr><td>輸出電阻 R<sub>o</sub></td><td>0</td></tr>
-<tr><td>開迴路電壓增益 A<sub>vo</sub></td><td>∞</td></tr>
-<tr><td>共模拒斥比 CMRR</td><td>∞</td></tr>
-<tr><td>增益頻寬乘積 GBP</td><td>∞</td></tr>
-<tr><td>變動率 SR</td><td>∞</td></tr>
-</tbody></table>
-
-<h3>2. 輸入偏壓電流（input bias current）：I<sub>ib</sub></h3>
-<p>輸入偏壓電流是指 OPA 兩個輸入端所需直流偏壓電流的平均值。理想 OPA 的輸入阻抗無窮大，因此理想值為 0。</p>
-<div class="formula"><b>I<sub>ib</sub> = (I<sub>ib1</sub> + I<sub>ib2</sub>) / 2</b></div>
-
-<h3>3. 輸入抵補電流（input offset current）：I<sub>io</sub></h3>
-<p>輸入抵補電流是兩個輸入端偏壓電流之差的絕對值，用來描述兩輸入端電流不平衡的程度；理想值為 0。</p>
-<div class="formula"><b>I<sub>io</sub> = |I<sub>ib1</sub> − I<sub>ib2</sub>|</b></div>
-
-<h3>4. 輸入抵補電壓（input offset voltage）：V<sub>io</sub></h3>
-<p>當兩輸入端理論上應等電位時，實際 OPA 因內部元件不完全對稱，可能需要在輸入端施加一個微小差動電壓，使輸出回到 0 V。這個等效差動電壓就是輸入抵補電壓。</p>
-<div class="formula"><b>V<sub>io</sub> = |V<sub>i(+)</sub> − V<sub>i(−)</sub>|</b></div>
-<div class="keybox"><b>補充：</b>μA741 可藉由第 1、5 腳調整其輸入抵補電壓，使輸出在無輸入時更接近 0 V。</div>
-
-<h3>5. 共模拒斥比（Common-Mode Rejection Ratio, CMRR）</h3>
-<p>OPA 主要希望放大兩輸入端的「差值」，而抑制同時出現在兩輸入端的「共模信號」。因此 CMRR 越大，表示 OPA 越能抑制共模雜訊。</p>
-<div class="formula">差模信號：<b>V<sub>d</sub> = V<sub>i1</sub> − V<sub>i2</sub></b></div>
-<div class="formula">共模信號：<b>V<sub>c</sub> = (V<sub>i1</sub> + V<sub>i2</sub>) / 2</b></div>
-<div class="formula">輸出電壓：<b>V<sub>o</sub> = A<sub>d</sub>V<sub>d</sub> + A<sub>c</sub>V<sub>c</sub></b></div>
-<div class="formula"><b>CMRR = |A<sub>d</sub> / A<sub>c</sub>|</b></div>
-<div class="formula"><b>CMRR(dB) = 20 log<sub>10</sub>|A<sub>d</sub> / A<sub>c</sub>|</b></div>
-<p>理想情況：<b>A<sub>d</sub> = ∞、A<sub>c</sub> = 0，因此 CMRR = ∞。</b></p>
-
-<h3>6. 增益頻寬乘積（gain-bandwidth product, GBP）</h3>
-<p>OPA 的開迴路增益會隨頻率上升而下降；在一定範圍內，增益與頻寬的乘積近似為常數。</p>
-<div class="formula"><b>GBP = A<sub>v</sub> × BW</b></div>
-<div class="keybox">因此在同一顆 OPA 中，若閉迴路增益設得越大，可用頻寬通常越小；反之增益越小，可用頻寬通常越大。</div>
-
-<h3>7. 變動率（Slew Rate, SR）</h3>
-<p>變動率是輸出電壓每單位時間所能改變的最大速率，用來描述 OPA 對快速變化信號的追隨能力。</p>
-<div class="formula"><b>SR = ΔV<sub>o</sub> / Δt</b>　或　<b>SR = dV<sub>o</sub>/dt</b></div>
-<p>常用單位為 V/μs。若輸入變化速度超過 OPA 的 SR 限制，輸出波形可能失真。</p>
-</section>
-<section id="practice"><p class="section-no">11</p><h2>章節題庫</h2><div class="download-row available"><div><b>第 10 章 10-1 基礎題庫</b><small>15 題，含基本觀念、負回授、虛短路、比較器與簡易計算，附答案與解析。</small></div><div class="download-actions"><a class="button primary" href="question-bank.html">開始練習 →</a></div></div><div class="download-row available" style="margin-top:.8rem"><div><b>第 10 章 10-2 特性及參數題庫</b><small>20 題，涵蓋 Iib、Iio、Vio、CMRR、GBP、SR 與理想 OPA 特性。</small></div><div class="download-actions"><a class="button primary" href="question-bank-10-2.html">開始練習 →</a></div></div></section>
-</article>
-</div>
-</main>
-<footer><div><strong>個人教學資源網</strong><p>把複雜概念拆成可以一步一步理解的學習路徑。</p></div><div><a href="../../../courses/index.html">課程總覽</a><a href="../../../downloads.html">教材下載</a></div><p class="copyright">© <span data-year></span> 個人教學資源網</p></footer>
+<header class="site-header"><a class="skip" href="#main">跳到主要內容</a><div class="nav-wrap"><a class="brand" href="../../../index.html"><span class="brand-mark">01</span><span>個人教學資源網</span></a><button class="menu-button" aria-expanded="false" aria-controls="site-nav">選單</button><nav id="site-nav" aria-label="主要導覽"><a href="../../../index.html">首頁</a><a aria-current="page" href="../../../courses/index.html">課程</a><a href="../../../downloads.html">教材下載</a><a href="../../../quizzes.html">題庫／測驗</a><a href="../../../about.html">關於老師</a><a href="../../../dashboard/">我的課程</a></nav><button class="button ghost" data-logout="" hidden="">登出</button></div></header>
+<main id="main"><p class="status" data-status="" role="status">正在確認登入與課程權限…</p><div id="lesson-content" data-private="" data-course-id="electronics-2" data-resource-id="electronics-2-chapter10-lesson" hidden=""></div><noscript>請啟用 JavaScript 並登入以閱讀教材。</noscript></main>
+<footer><div><strong>個人教學資源網</strong><p>把複雜概念拆成可以一步一步理解的學習路徑。</p></div><div><a href="../../../courses/index.html">課程總覽</a><a href="../../../downloads.html">教材下載</a></div><p class="copyright">© <span data-year=""></span> 個人教學資源網</p></footer>
 <script src="../../../js/main.js"></script>
-</body>
-</html>
+
+
+<script type="module" src="../../../js/lesson.js"></script></body></html>
