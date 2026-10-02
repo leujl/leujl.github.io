@@ -2,25 +2,32 @@ import { onAuthStateChanged, signOut, setPersistence, browserLocalPersistence, b
 import { doc, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js';
 import { auth, db, configurationError } from './firebase.js';
 import { clearPrivateContent, siteUrl } from './ui.js';
-let current = null, settled = false, stopProfile, lastError;
+let current = null, settled = false, stopProfile, stopService, lastError;
 const listeners = new Set();
 function publish(state) { current = state; settled = true; listeners.forEach(fn => fn(state)); }
 if (auth) onAuthStateChanged(auth, user => {
-  stopProfile?.(); clearPrivateContent();
+  stopProfile?.(); stopService?.(); clearPrivateContent();
   if (!user) return publish({user:null,profile:null,error:lastError});
   settled = false;
+  let liveProfile, service;
+  const refresh=()=>{if(!liveProfile || !service)return;clearPrivateContent();publish({user,profile:liveProfile,servicePaused:service.paused===true});};
+  stopService=onSnapshot(doc(db,'serviceControl','budget'),{includeMetadataChanges:true},snapshot=>{
+    if(snapshot.metadata.fromCache)return;
+    service=snapshot.exists()?snapshot.data():{paused:true};refresh();
+  },()=>{service={paused:true};refresh();});
   stopProfile = onSnapshot(doc(db,'users',user.uid), {includeMetadataChanges:true}, snapshot => {
     // Never authorize using offline cached role or enrollment data.
     if (snapshot.metadata.fromCache) return;
     const profile = snapshot.exists() ? {...snapshot.data(),uid:user.uid} : null;
     if (!profile || profile.active !== true || (profile.authValidAfter || 0) > Math.floor(Date.parse(user.metadata.lastSignInTime)/1000)) {
+      liveProfile=null;stopService?.();
       clearPrivateContent();
       lastError=!profile ? '帳號尚未取得教材權限，請洽老師。' : profile.active!==true ? '此帳號目前已停用，請洽老師。' : '登入權限已更新，請重新登入。';
       publish({user:null,profile:null,error:lastError});
       void signOut(auth);
       return;
     }
-    publish({user,profile});
+    liveProfile=profile;refresh();
   }, () => { clearPrivateContent(); publish({user:null,profile:null,error:'無法確認帳號權限，請重新登入。'}); void signOut(auth); });
 });
 export function watchSession(fn) {

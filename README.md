@@ -99,3 +99,7 @@ CI workflow 在開發分支或 PR 執行程式、Rules、Functions 測試，不�
 
 原 Repository / main / Git 歷史已有公開教材。新 Rules 不能保護 GitHub 中的舊副本，也不能撤回外部下載或快取。正式保護的完成条件包含另行處理公開 Repository 的教材歷史與 Pages 舊部署來源；需備份後由擁有者決定私人保留與公開歷史處理方案。本次不改寫 main 歷史。
 
+
+## Monthly USD5 budget protection
+See [budget-control](docs/budget-control.md). Deploy the updated Rules and pauseOnBudget function, configure the actual budget/account IDs and Cloud Billing Pub/Sub connection, and initialize serviceControl before enabling materials. This is a delayed service pause, not a hard billing cap. Missing control/flags deny material access. Recovery is manual in a later billing month.
+

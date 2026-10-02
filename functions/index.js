@@ -3,10 +3,19 @@ import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { randomUUID } from 'node:crypto';
+import { onMessagePublished } from 'firebase-functions/v2/pubsub';
+import { defineString } from 'firebase-functions/params';
+import { budgetDecision, pauseMaterials } from './budget-policy.js';
 import { validateStudent, validateUid } from './validation.js';
 initializeApp();
 const db=getFirestore(),auth=getAuth();
 const options={region:'asia-east1',maxInstances:5,concurrency:20};
+const budgetId=defineString('BUDGET_ID',{default:''});
+const billingAccountId=defineString('BUDGET_BILLING_ACCOUNT_ID',{default:''});
+export const pauseOnBudget=onMessagePublished({topic:'teaching-budget-alerts',region:'asia-east1',maxInstances:1,retry:true},async event=>{
+  const decision=budgetDecision(event.data.message,{budgetId:budgetId.value(),billingAccountId:billingAccountId.value()});
+  if(decision) await pauseMaterials(db,decision,FieldValue.serverTimestamp());
+});
 async function requireTeacher(request) {
   if(!request.auth) throw new HttpsError('unauthenticated','請先登入。');
   const token=request.rawRequest.headers.authorization?.replace(/^Bearer /,'');

@@ -14,6 +14,7 @@ export function guard({teacher=false,courseId,onReady=()=>{}}={}) {
       return;
     }
     if (!state.user) { location.replace(siteUrl('login.html')); return; }
+    if(state.servicePaused && !teacher){message('本月教材服務因預算限制暫停，請洽老師。');return;}
     if ((teacher && !isTeacher(state.profile)) || (courseId && !canAccessCourse(state.profile,courseId))) {
       message('沒有此課程或頁面的使用權限。'); location.replace(siteUrl('dashboard/')); return;
     }

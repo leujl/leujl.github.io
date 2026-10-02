@@ -5,7 +5,7 @@ service firebase.storage {
     function teacher() { return user().role in ['teacher', 'admin']; }
     function allowed(courseId, resourceId, filename) {
       let data = firestore.get(/databases/(default)/documents/resources/$(resourceId)).data;
-      return data.courseId == courseId
+      return data.get('budgetPaused', true) == false && data.courseId == courseId
         && data.storagePath == 'protected/' + courseId + '/' + resourceId + '/' + filename
         && (teacher() || (user().role == 'student' && data.active == true
           && data.visibility == 'student' && courseId in user().courses));

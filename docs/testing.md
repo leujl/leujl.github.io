@@ -53,3 +53,7 @@
 本機：http://127.0.0.1:4173/（僅程式開發預覽，預設 production config 留空）。
 原主站：https://leujl.github.io/（main 未變動，尚未具備本次保護）。
 正式 Firebase／HTTPS 驗證網址：尚未建立。由擁有者設定專案後建立 Firebase Hosting preview channel。
+
+## USD5 budget pause verification
+The updated suite contains 11 unit/static tests, 15 Rules emulator tests and 6 backend emulator tests. Budget checks cover under-limit, wrong identity/currency, stale messages, Pacific month boundaries, atomic/idempotent locking, direct student/teacher PDF denial and trusted next-month recovery. Real Cloud Billing Pub/Sub delivery, production IAM and the live frontend pause notification still require deployment verification. No production budget protection has been enabled by these tests.
+

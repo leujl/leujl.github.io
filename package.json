@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test:unit": "node --test tests/unit.test.mjs",
+    "test:unit": "node --test tests/unit.test.mjs tests/budget.test.mjs",
     "test:rules": "firebase emulators:exec --project demo-teaching-auth --only firestore,storage \"node --test --test-concurrency=1 tests/rules.test.mjs\"",
     "test:functions": "firebase emulators:exec --project demo-teaching-auth --only auth,firestore,functions \"node --test tests/functions.test.mjs\"",
     "build:site": "node scripts/build-site.mjs",
@@ -16,3 +16,4 @@
     "cheerio": "^1.1.0"
   }
 }
+

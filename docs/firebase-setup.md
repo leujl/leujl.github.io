@@ -44,3 +44,8 @@ resource.visibility=teacher 保護教師版；學生版题庫含原本答案解�
 
 目前沒有 production Project ID / Client Config、已部署 Functions URL、或 production 測試網址。移轉包只是已備妥的本機教材，不代表已上傳 Storage。Cloud Functions emulator 與 Rules emulator 的成功結果不能取代正式 IAM、CORS、信件寄送與跨瀏覽器驗證。
 
+
+## 每月 US$5 自動暫停
+最新版本需先依 docs/budget-control.md 初始化 serviceControl/budget，設定 Cloud Billing topic、預算識別參數及部署 pauseOnBudget，才能使用教材。Storage 資源缺少 budgetPaused=false 時會拒絕存取。更新後的移轉腳本會保留暫停狀態。
+
+

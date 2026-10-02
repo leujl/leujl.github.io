@@ -5,6 +5,7 @@ service cloud.firestore {
     function user() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
     function active() { return signedIn() && user().active == true && request.auth.token.auth_time >= user().get('authValidAfter', 0); }
     function teacher() { return active() && user().role in ['teacher', 'admin']; }
+    function serviceOpen() { return get(/databases/$(database)/documents/serviceControl/budget).data.paused == false; }
     function courseAccess(courseId) {
       return active() && (teacher() || (user().role == 'student' && courseId in user().courses));
     }
@@ -24,8 +25,12 @@ service cloud.firestore {
       allow write: if false;
     }
     match /resources/{resourceId} {
-      allow read: if active() && resourceAccess(resource.data);
+      allow read: if active() && serviceOpen() && resourceAccess(resource.data);
       allow write: if false;
+    }
+    match /serviceControl/budget {
+      allow get: if signedIn();
+      allow list, write: if false;
     }
     match /{document=**} { allow read, write: if false; }
   }

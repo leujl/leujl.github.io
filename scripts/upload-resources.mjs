@@ -18,14 +18,17 @@ if((bucketMetadata.defaultObjectAcl || []).some(acl=>['allUsers','allAuthenticat
 for(const course of manifest.courses){const {id,...data}=course;await db.doc('courses/'+id).set(data);}
 for(const resource of manifest.resources){
   const {id,...data}=resource;const file=bucket.file(resource.storagePath);
-  await db.doc('resources/'+id).set({...data,active:false});
+  await db.doc('resources/'+id).set({...data,active:false,budgetPaused:true});
   const contentType=resource.type==='pdf'?'application/pdf':resource.filename.endsWith('.png')?'image/png':resource.filename.endsWith('.svg')?'image/svg+xml':'text/html; charset=utf-8';
   await file.save(fs.readFileSync(path.join(privateRoot,resource.storagePath)),{resumable:false,metadata:{contentType,cacheControl:'private, no-store',metadata:{}}});
   // Ensure no legacy Firebase download token can bypass Security Rules.
   await file.setMetadata({metadata:{firebaseStorageDownloadTokens:null}});
   const [metadata]=await file.getMetadata();if((metadata.acl || []).some(acl=>['allUsers','allAuthenticatedUsers'].includes(acl.entity)))throw new Error('Object has public ACL: '+id);
   if(metadata.metadata?.firebaseStorageDownloadTokens)throw new Error('Download token still exists: '+id);
-  await db.doc('resources/'+id).set(data);console.log('Uploaded '+id);
+  await db.runTransaction(async transaction=>{
+    const control=(await transaction.get(db.doc('serviceControl/budget'))).data();
+    transaction.set(db.doc('resources/'+id),{...data,budgetPaused:control?.paused!==false});
+  });console.log('Uploaded '+id);
 }
 console.log('Upload complete. Verify Rules before switching the public website.');
 
