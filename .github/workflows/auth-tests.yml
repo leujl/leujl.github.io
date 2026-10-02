@@ -1,0 +1,30 @@
+name: Authentication security tests
+on:
+  push:
+    branches: [feature/auth-system]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm --dir functions install --frozen-lockfile --ignore-scripts
+      - run: pnpm run test:unit
+      - run: pnpm run test:rules
+      - run: pnpm run test:functions
+
