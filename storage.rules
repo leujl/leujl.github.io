@@ -1,0 +1,22 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function user() { return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data; }
+    function teacher() { return user().role in ['teacher', 'admin']; }
+    function allowed(courseId, resourceId, filename) {
+      let data = firestore.get(/databases/(default)/documents/resources/$(resourceId)).data;
+      return data.get('budgetPaused', true) == false && data.courseId == courseId
+        && data.storagePath == 'protected/' + courseId + '/' + resourceId + '/' + filename
+        && (teacher() || (user().role == 'student' && data.active == true
+          && data.visibility == 'student' && courseId in user().courses));
+    }
+    match /protected/{courseId}/{resourceId}/{filename} {
+      allow get: if request.auth != null && user().active == true && request.auth.token.auth_time >= user().get('authValidAfter', 0) && allowed(courseId, resourceId, filename);
+      // Uploads only through a trusted Admin SDK; browser cannot create token URLs.
+      allow list, write: if false;
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
+
+

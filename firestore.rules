@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function user() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function active() { return signedIn() && user().active == true && request.auth.token.auth_time >= user().get('authValidAfter', 0); }
+    function teacher() { return active() && user().role in ['teacher', 'admin']; }
+    function serviceOpen() { return get(/databases/$(database)/documents/serviceControl/budget).data.paused == false; }
+    function courseAccess(courseId) {
+      return active() && (teacher() || (user().role == 'student' && courseId in user().courses));
+    }
+    function resourceAccess(data) {
+      return teacher() || (data.active == true && data.visibility == 'student' && courseAccess(data.courseId)
+        && get(/databases/$(database)/documents/courses/$(data.courseId)).data.active == true);
+    }
+    match /users/{uid} {
+      // Disabled users may read their own status to display a clear message.
+      allow get: if signedIn() && (request.auth.uid == uid || teacher());
+      allow list: if teacher();
+      // All mutations go through checked callable functions or trusted migration scripts.
+      allow write: if false;
+    }
+    match /courses/{courseId} {
+      allow read: if teacher() || (resource.data.active == true && courseAccess(courseId));
+      allow write: if false;
+    }
+    match /resources/{resourceId} {
+      allow read: if active() && serviceOpen() && resourceAccess(resource.data);
+      allow write: if false;
+    }
+    match /serviceControl/budget {
+      allow get: if signedIn();
+      allow list, write: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
+
+

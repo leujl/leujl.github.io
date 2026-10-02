@@ -1,0 +1,10 @@
+node_modules/
+.firebase/
+*-debug.log
+.env
+.env.*
+!.env.example
+migration-private/
+site/
+service-account*.json
+
