@@ -24,13 +24,13 @@
 <li><b>具有低輸出電阻的射極隨耦放大電路：</b>提供較高電流增益與低輸出電阻，使輸出較不受負載影響。</li>
 <li><b>定電流源電路：</b>提供穩定的直流偏壓電流給各級放大電路。</li>
 </ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-2.svg" alt="圖10-2 運算放大器IC之結構方塊圖"><figcaption>依課本圖 10-2 重繪：運算放大器 IC 之結構方塊圖。</figcaption></figure></section>
+<figure><img src="../../../assets/electronics-2/ch10/fig10-2.png" alt="運算放大器 IC 之結構方塊圖"><figcaption>運算放大器 IC 之結構方塊圖</figcaption></figure></section>
 
 <section id="p2"><p class="section-no">02</p><h2>運算放大器之電路符號</h2><ul class="check-list"><li><b>反相輸入端：</b>標示「−」，輸入信號增加時，輸出傾向往相反方向變化。</li><li><b>非反相輸入端：</b>標示「＋」，輸入信號增加時，輸出傾向往同方向變化。</li><li><b>輸出端：</b>以 V<sub>o</sub> 表示。</li><li><b>電源端：</b>一般為 +V<sub>CC</sub> 與 −V<sub>CC</sub>。</li></ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-3a.svg" alt="圖10-3a 運算放大器標準電路符號"><figcaption>依課本圖 10-3(a) 重繪：運算放大器標準電路符號。</figcaption></figure></section>
+<figure><img src="../../../assets/electronics-2/ch10/fig10-3a.png" alt="運算放大器標準電路符號"><figcaption>運算放大器標準電路符號</figcaption></figure></section>
 
 <section id="p3"><p class="section-no">03</p><h2>理想運算放大器具有下列特性</h2><ul class="check-list"><li><b>輸入電阻無窮大：</b>R<sub>i</sub> = ∞，所以流入輸入端的電流 I<sub>i</sub> = 0。</li><li><b>輸出電阻為 0：</b>R<sub>o</sub> = 0，使輸出電壓理想上不受負載影響。</li><li><b>開迴路電壓增益無窮大：</b>A<sub>vo</sub> = ∞。</li></ul>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-5a.svg" alt="圖10-5a 運算放大器等效電路模型"><figcaption>依課本圖 10-5(a) 重繪：運算放大器的等效電路模型。</figcaption></figure></section>
+<figure><img src="../../../assets/electronics-2/ch10/fig10-5a.png" alt="運算放大器的等效電路模型"><figcaption>運算放大器的等效電路模型</figcaption></figure></section>
 
 <section id="p4"><p class="section-no">04</p><h2>運算放大器的主要功能特性有二</h2><ul class="check-list"><li><b>負回授的虛短路（虛接地）功能特性。</b></li><li><b>比較器功能特性。</b></li></ul><div class="keybox"><b>判斷核心：</b>看到 OPA 題目時，先判斷「有沒有負回授」。有負回授且未飽和，通常走虛短路分析；沒有負回授，通常走比較器分析。</div></section>
 
@@ -42,7 +42,7 @@
 <div class="formula">A<sub>v</sub> = V<sub>o</sub>/V<sub>i(+)</sub> = A<sub>vo</sub>/(1 + βA<sub>vo</sub>) = 1/(1/A<sub>vo</sub> + β)</div>
 <p>當理想 OPA 的 A<sub>vo</sub> → ∞ 時，1/A<sub>vo</sub> → 0，因此：</p>
 <div class="formula"><b>A<sub>v</sub> ≈ 1/β</b></div>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-9ab.svg" alt="圖10-9 負回授與虛短路"><figcaption>依課本圖 10-9(a)、(b) 重繪：負回授網路與虛短路特性。</figcaption></figure></section>
+<figure><img src="../../../assets/electronics-2/ch10/fig10-9ab.png" alt="運算放大器的負回授特性"><figcaption>運算放大器的負回授特性</figcaption></figure></section>
 
 <section id="p6"><p class="section-no">06</p><h2>放大器的負回授虛短路（虛接地）功能特性</h2><ul class="check-list">
 <li>加入負回授後，反相輸入端電壓會追隨非反相輸入端，因此 <b>V<sub>i(−)</sub> ≈ V<sub>i(+)</sub></b>。</li>
@@ -54,7 +54,7 @@
 
 <section id="p7"><p class="section-no">07</p><h2>比較器的功能特性與重點整理</h2><p>當理想 OPA <b>沒有接負回授網路</b>時，可視為比較器。由於 A<sub>vo</sub> 極大，只要兩輸入端有極小電壓差，輸出就會迅速進入正或負飽和。</p>
 <table class="mini-table"><thead><tr><th>輸入比較</th><th>輸出結果</th><th>判讀</th></tr></thead><tbody><tr><td>V<sub>+</sub> &gt; V<sub>−</sub></td><td>V<sub>o</sub> = +V<sub>sat</sub> ≈ +V<sub>CC</sub></td><td>正飽和</td></tr><tr><td>V<sub>+</sub> &lt; V<sub>−</sub></td><td>V<sub>o</sub> = −V<sub>sat</sub> ≈ −V<sub>CC</sub></td><td>負飽和</td></tr></tbody></table>
-<figure><img src="../../../assets/electronics-2/ch10/fig10-10ab.svg" alt="圖10-10 運算放大器比較器特性"><figcaption>依課本圖 10-10(a)、(b) 重繪：比較器的正、負飽和輸出。</figcaption></figure>
+<figure><img src="../../../assets/electronics-2/ch10/fig10-10ab.png" alt="運算放大器比較器的輸出特性"><figcaption>運算放大器比較器的輸出特性</figcaption></figure>
 <div class="keybox"><b>重點：</b>比較器題目不是用 V<sub>+</sub> = V<sub>−</sub>；而是先比較 V<sub>+</sub> 與 V<sub>−</sub> 的大小，再決定輸出為 +V<sub>sat</sub> 或 −V<sub>sat</sub>。</div></section>
 
 <section id="p8"><p class="section-no">08</p><h2>OPA 虛短路之滿足必要條件</h2><p>依課本，必須同時滿足：</p><ul class="check-list"><li><b>開迴路增益 A<sub>vo</sub> = ∞</b>（理想 OPA 假設）。</li><li><b>電路為負回授結構。</b></li><li><b>輸出未飽和：</b>|V<sub>o</sub>| &lt; |V<sub>sat</sub>|。</li></ul>
